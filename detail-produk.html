@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detail Produk - Kampung Bahari</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .detail-wrapper {
+    max-width: 900px;
+    margin: 100px auto 60px;
+    padding: 0 24px;
+  }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    font-size: 13px; color: #888;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .breadcrumb a { color: #0077b6; text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { color: #aaa; }
+
+  /* TOMBOL KEMBALI */
+  .btn-back-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1.5px solid #ccc; border-radius: 8px;
+    padding: 9px 18px; font-size: 14px; font-weight: 500;
+    color: #333; text-decoration: none; background: #fff;
+    margin-bottom: 24px; transition: border-color .2s, color .2s;
+  }
+  .btn-back-outline:hover { border-color: #0077b6; color: #0077b6; }
+
+  /* CARD PRODUK */
+  .produk-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .produk-img {
+    width: 100%; border-radius: 12px;
+    object-fit: cover; aspect-ratio: 1/1;
+  }
+  .produk-info { display: flex; flex-direction: column; gap: 16px; }
+
+  /* BADGE KATEGORI */
+  .produk-badge-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #e0f2fe; color: #0077b6;
+    font-size: 13px; font-weight: 600;
+    padding: 5px 14px; border-radius: 20px;
+    width: fit-content;
+  }
+
+  /* JUDUL & HARGA */
+  .produk-nama {
+    font-size: 32px; font-weight: 800;
+    color: #023e8a; line-height: 1.2;
+  }
+  .produk-harga {
+    font-size: 30px; font-weight: 800;
+    color: #0077b6;
+  }
+  .produk-deskripsi {
+    font-size: 15px; color: #666; line-height: 1.7;
+  }
+
+  /* PRODUSEN */
+  .produsen-box {
+    background: #f0f7ff;
+    border-left: 4px solid #0077b6;
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .produsen-label {
+    font-size: 13px; font-weight: 700; color: #0077b6;
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 4px;
+  }
+  .produsen-nama { font-size: 15px; color: #333; font-weight: 500; }
+
+  /* TOMBOL WA */
+  .btn-wa {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: #25D366; color: #fff;
+    border: none; border-radius: 10px;
+    padding: 16px; font-size: 17px; font-weight: 700;
+    cursor: pointer; text-decoration: none;
+    transition: background .2s; font-family: 'Poppins', sans-serif;
+    width: 100%;
+  }
+  .btn-wa:hover { background: #1ebe5d; }
+  .btn-wa svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+
+  @media (max-width: 680px) {
+    .produk-card { grid-template-columns: 1fr; }
+    .produk-nama { font-size: 24px; }
+    .produk-harga { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <span>🐟</span> Kampung Bahari
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#home">Beranda</a></li>
+    <li><a href="index.html#produk">Produk Warga</a></li>
+    <li><a href="index.html#berita">Kegiatan</a></li>
+    <li><a href="index.html#peta">Peta</a></li>
+    <li><a href="index.html#kontak">Kontak</a></li>
+  </ul>
+</nav>
+
+<div class="detail-wrapper">
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb" id="breadcrumb">
+    <a href="index.html">Beranda</a>
+    <span>›</span>
+    <a href="index.html#produk">Katalog Produk</a>
+    <span>›</span>
+    <span id="bc-nama">Produk</span>
+  </div>
+
+  <!-- KEMBALI -->
+  <a href="index.html#produk" class="btn-back-outline">← Kembali ke Katalog</a>
+
+  <!-- CARD -->
+  <div class="produk-card">
+    <img class="produk-img" id="produk-img" src="" alt="">
+    <div class="produk-info">
+      <div class="produk-badge-tag" id="produk-badge">🏷️ Kategori</div>
+      <h1 class="produk-nama" id="produk-nama">Nama Produk</h1>
+      <div class="produsen-box">
+        <div class="produsen-label">👤 Produsen:</div>
+        <div class="produsen-nama" id="produk-produsen">-</div>
+      </div>
+      <div class="produk-harga" id="produk-harga">Rp 0</div>
+      <div class="produk-deskripsi" id="produk-deskripsi"></div>
+      <a class="btn-wa" id="btn-wa" href="#" target="_blank">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Beli Sekarang via WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="brand-name">🐟 Kampung Bahari</div>
+    <p>Membangun ekonomi pesisir dari kekayaan laut nusantara.</p>
+  </div>
+  <div class="footer-links">
+    <h4>Tautan</h4>
+    <ul>
+      <li><a href="index.html#home">Beranda</a></li>
+      <li><a href="index.html#produk">Produk</a></li>
+      <li><a href="index.html#berita">Kegiatan</a></li>
+      <li><a href="index.html#kontak">Admin</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2026 Warga Kampung Bahari.</div>
+
+<script>
+const produkData = {
+  "1": {
+    nama: "Abon Ikan Tuna",
+    kategori: "🏷️ Olahan Ikan",
+    img: "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?w=600&q=80",
+    produsen: "Bu Sari",
+    harga: "Rp 35.000",
+    hargaAngka: 35000,
+    deskripsi: "Abon ikan tuna asli buatan warga Kampung Bahari. Dibuat dari ikan tuna segar pilihan tanpa bahan pengawet. Cocok sebagai lauk nasi atau bekal perjalanan. Tersedia kemasan 100gr dan 250gr.",
+    wa: "6282198765432"
+  },
+  "2": {
+    nama: "Ikan Asin Kering",
+    kategori: "🏷️ Olahan Ikan",
+    img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80",
+    produsen: "Pak Hendra",
+    harga: "Rp 20.000",
+    hargaAngka: 20000,
+    deskripsi: "Ikan asin kering berkualitas tinggi hasil tangkapan nelayan lokal Kampung Bahari. Diproses secara tradisional dengan penjemuran alami sehingga menghasilkan cita rasa gurih yang khas.",
+    wa: "6282198765432"
+  },
+  "3": {
+    nama: "Kerupuk Udang",
+    kategori: "🏷️ Udang & Kerang",
+    img: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=600&q=80",
+    produsen: "Bu Aminah",
+    harga: "Rp 18.000",
+    hargaAngka: 18000,
+    deskripsi: "Kerupuk udang renyah dan gurih dari udang segar asli Kampung Bahari. Digoreng dengan minyak bersih tanpa pewarna buatan. Cocok sebagai camilan atau pelengkap makan.",
+    wa: "6282198765432"
+  },
+  "4": {
+    nama: "Terasi Udang Premium",
+    kategori: "🏷️ Udang & Kerang",
+    img: "https://images.unsplash.com/photo-1606731219412-2e455e9b4c6a?w=600&q=80",
+    produsen: "Pak Joko",
+    harga: "Rp 15.000",
+    hargaAngka: 15000,
+    deskripsi: "Terasi udang premium buatan warga Kampung Bahari dari udang rebon pilihan. Fermentasi alami menghasilkan aroma dan rasa yang kuat, cocok sebagai bumbu masakan nusantara.",
+    wa: "6282198765432"
+  },
+  "5": {
+    nama: "Hiasan Cangkang Kerang",
+    kategori: "🏷️ Kerajinan",
+    img: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=600&q=80",
+    produsen: "Ibu Lestari",
+    harga: "Rp 50.000",
+    hargaAngka: 50000,
+    deskripsi: "Kerajinan tangan dari cangkang kerang laut asli yang dikumpulkan di pantai Kampung Bahari. Dibuat dengan tangan oleh pengrajin lokal, cocok sebagai dekorasi rumah atau oleh-oleh khas pesisir.",
+    wa: "6282198765432"
+  },
+  "6": {
+    nama: "Sambal Ikan Cakalang",
+    kategori: "🏷️ Olahan Ikan",
+    img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80",
+    produsen: "Bu Ratna",
+    harga: "Rp 28.000",
+    hargaAngka: 28000,
+    deskripsi: "Sambal ikan cakalang pedas nikmat buatan warga Kampung Bahari. Menggunakan cakalang segar dan rempah pilihan. Tahan hingga 2 minggu di suhu ruang dan 1 bulan di kulkas.",
+    wa: "6282198765432"
+  }
+};
+
+function getParam(key) {
+  return new URLSearchParams(window.location.search).get(key);
+}
+
+const id = getParam('id') || '1';
+const p = produkData[id];
+
+if (p) {
+  document.title = p.nama + ' - Kampung Bahari';
+  document.getElementById('bc-nama').textContent = p.nama;
+  document.getElementById('produk-img').src = p.img;
+  document.getElementById('produk-img').alt = p.nama;
+  document.getElementById('produk-badge').textContent = p.kategori;
+  document.getElementById('produk-nama').textContent = p.nama;
+  document.getElementById('produk-produsen').textContent = p.produsen;
+  document.getElementById('produk-harga').textContent = p.harga;
+  document.getElementById('produk-deskripsi').textContent = p.deskripsi;
+
+  // Template pesan WhatsApp
+  const pesan = `Halo, saya tertarik membeli produk *${p.nama}* dari Kampung Bahari seharga *${p.harga}*. Apakah stok masih tersedia? Terima kasih 🙏`;
+  const waUrl = `https://wa.me/${p.wa}?text=${encodeURIComponent(pesan)}`;
+  document.getElementById('btn-wa').href = waUrl;
+}
+</script>
+</body>
+</html>

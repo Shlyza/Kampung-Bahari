@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kampung Bahari - Desa Pesisir Unggulan</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home"><span>🐟</span> Kampung Bahari</a>
+  <ul class="nav-links">
+    <li><a href="#home">Beranda</a></li>
+    <li><a href="#produk">Produk Warga</a></li>
+    <li><a href="#berita">Kegiatan</a></li>
+    <li><a href="#peta">Peta</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Potensi Kampung Bahari</h1>
+    <p>Temukan produk unggulan hasil laut warga Kampung Bahari, langsung dari nelayan ke tangan Anda.</p>
+    <a href="#produk" class="btn-primary">Lihat Produk</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item">
+    <div class="icon">🏪</div>
+    <div class="number">20+</div>
+    <div class="label">UMKM</div>
+  </div>
+  <div class="stat-item">
+    <div class="icon">🐠</div>
+    <div class="number">40+</div>
+    <div class="label">Produk</div>
+  </div>
+  <div class="stat-item">
+    <div class="icon">👨‍👩‍👧‍👦</div>
+    <div class="number">250+</div>
+    <div class="label">KK Warga</div>
+  </div>
+</div>
+
+<!-- TENTANG -->
+<section id="tentang">
+  <h2 class="section-title">Tentang Kampung Bahari</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <h3>Profil Wilayah</h3>
+      <p>Kampung Bahari adalah desa pesisir yang kaya hasil laut. Terletak di tepi pantai, warga kami telah turun-temurun mengandalkan laut sebagai sumber kehidupan dan kearifan lokal.</p>
+      <h3>Potensi Lokal</h3>
+      <p>Nelayan Kampung Bahari aktif menghasilkan berbagai produk olahan laut berkualitas tinggi, mulai dari ikan asin, abon ikan, kerupuk udang, terasi, hingga kerajinan dari cangkang kerang.</p>
+    </div>
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="Kampung Bahari">
+    </div>
+  </div>
+</section>
+
+<!-- KATALOG -->
+<section id="produk">
+  <h2 class="section-title">Katalog Produk Warga</h2>
+  <input class="search-bar" type="text" placeholder="Cari produk..." id="searchInput" oninput="filterProducts()">
+  <div class="filter-tabs">
+    <button class="filter-tab active" onclick="setFilter('semua', this)">Semua</button>
+    <button class="filter-tab" onclick="setFilter('olahan', this)">Olahan Ikan</button>
+    <button class="filter-tab" onclick="setFilter('udang', this)">Udang & Kerang</button>
+    <button class="filter-tab" onclick="setFilter('kerajinan', this)">Kerajinan</button>
+  </div>
+  <div class="product-grid" id="productGrid">
+    <div class="product-card" data-category="olahan">
+      <img src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?w=400&q=80" alt="Abon Ikan Tuna">
+      <div class="product-card-body">
+        <div class="product-badge">Olahan Ikan</div>
+        <div class="product-name">Abon Ikan Tuna</div>
+        <div class="product-price">Rp 35.000</div>
+        <div class="product-actions">
+          <a href="detail-produk.html?id=1" class="btn-detail">Detail</a>
+          <a href="#" class="btn-beli" data-id="1">🛒 Beli</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-category="olahan">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80" alt="Ikan Asin Kering">
+      <div class="product-card-body">
+        <div class="product-badge">Olahan Ikan</div>
+        <div class="product-name">Ikan Asin Kering</div>
+        <div class="product-price">Rp 20.000</div>
+        <div class="product-actions">
+          <a href="detail-produk.html?id=2" class="btn-detail">Detail</a>
+          <a href="#" class="btn-beli" data-id="2">🛒 Beli</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-category="udang">
+      <img src="data:image/jpeg;base64,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" alt="Kerupuk Udang">
+      <div class="product-card-body">
+        <div class="product-badge">Udang & Kerang</div>
+        <div class="product-name">Kerupuk Udang</div>
+        <div class="product-price">Rp 18.000</div>
+        <div class="product-actions">
+          <a href="detail-produk.html?id=3" class="btn-detail">Detail</a>
+          <a href="#" class="btn-beli" data-id="3">🛒 Beli</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-category="kerajinan">
+      <img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&q=80" alt="Hiasan Cangkang Kerang">
+      <div class="product-card-body">
+        <div class="product-badge">Kerajinan</div>
+        <div class="product-name">Hiasan Cangkang Kerang</div>
+        <div class="product-price">Rp 50.000</div>
+        <div class="product-actions">
+          <a href="detail-produk.html?id=5" class="btn-detail">Detail</a>
+          <a href="#" class="btn-beli" data-id="5">🛒 Beli</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-category="olahan">
+      <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&q=80" alt="Sambal Ikan Cakalang">
+      <div class="product-card-body">
+        <div class="product-badge">Olahan Ikan</div>
+        <div class="product-name">Sambal Ikan Cakalang</div>
+        <div class="product-price">Rp 28.000</div>
+        <div class="product-actions">
+          <a href="detail-produk.html?id=6" class="btn-detail">Detail</a>
+          <a href="#" class="btn-beli" data-id="6">🛒 Beli</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BERITA -->
+<section id="berita">
+  <h2 class="section-title">Berita &amp; Kegiatan</h2>
+  <div class="news-grid">
+    <div class="news-card">
+      <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="Pelatihan Pengolahan Ikan">
+      <div class="news-card-body">
+        <div class="news-meta">📅 10 Mei 2024</div>
+        <h3>Pelatihan Pengolahan Hasil Laut</h3>
+        <p>Kelompok nelayan Kampung Bahari mengikuti pelatihan pengolahan ikan menjadi produk bernilai tinggi bersama Dinas Kelautan...</p>
+        <a href="berita-detail.html?id=1" class="btn-read">Baca Selengkapnya →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80" alt="Bersih Pantai">
+      <div class="news-card-body">
+        <div class="news-meta">📅 22 Apr 2024</div>
+        <h3>Gotong Royong Bersih Pantai</h3>
+        <p>Warga Kampung Bahari bersama relawan lingkungan menggelar aksi bersih pantai untuk menjaga kebersihan kawasan pesisir...</p>
+        <a href="berita-detail.html?id=2" class="btn-read">Baca Selengkapnya →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+  <h2 class="section-title">Hubungi Kami</h2>
+  <div class="kontak-grid">
+    <div class="kontak-info">
+      <h3>Info Kontak</h3>
+      <div class="kontak-item">
+        <span class="kontak-icon">📍</span>
+        <span>Kampung Bahari, Desa Pesisir, Kec. Niswangan</span>
+      </div>
+      <div class="kontak-item">
+        <span class="kontak-icon">📞</span>
+        <span>+62 813 7761 1742</span>
+      </div>
+      <div class="kontak-item">
+        <span class="kontak-icon">📧</span>
+        <span>info@kampungbahari.id</span>
+      </div>
+    </div>
+    <div class="map-placeholder" id="peta">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.047546965587!2d110.39178397476597!3d-7.784783892234935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59db2dacb069%3A0x7f35156a4aeb645a!2sUIN%20Sunan%20Kalijaga%20Yogyakarta!5e0!3m2!1sid!2sid!4v1782669282401!5m2!1sid!2sid
+      " width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="brand-name">🐟 Kampung Bahari</div>
+    <p>Membangun ekonomi pesisir dari kekayaan laut nusantara.</p>
+  </div>
+  <div class="footer-links">
+    <h4>Tautan</h4>
+    <ul>
+      <li><a href="#home">Beranda</a></li>
+      <li><a href="#produk">Produk</a></li>
+      <li><a href="#berita">Kegiatan</a></li>
+      <li><a href="#kontak">Admin</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2026 Warga Kampung Bahari.</div>
+
+<script src="script.js"></script>
+<script>
+const waNumber = "6281377611742";
+
+const produkWA = {
+  "1": { nama: "Abon Ikan Tuna",          harga: "Rp 35.000" },
+  "2": { nama: "Ikan Asin Kering",         harga: "Rp 20.000" },
+  "3": { nama: "Kerupuk Udang",            harga: "Rp 18.000" },
+  "4": { nama: "Terasi Udang Premium",     harga: "Rp 15.000" },
+  "5": { nama: "Hiasan Cangkang Kerang",   harga: "Rp 50.000" },
+  "6": { nama: "Sambal Ikan Cakalang",     harga: "Rp 28.000" }
+};
+
+document.querySelectorAll('.btn-beli[data-id]').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const id = this.dataset.id;
+    const p = produkWA[id];
+    if (!p) return;
+    const pesan = `Halo, saya tertarik membeli produk *${p.nama}* dari Kampung Bahari seharga *${p.harga}*. Apakah stok masih tersedia? Terima kasih 🙏`;
+    window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(pesan)}`, '_blank');
+  });
+});
+</script>
+</body>
+</html>
